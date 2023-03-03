@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Url Shortener</title>
+</head>
+<body>
+    <section class="left">
+        <div>
+            <h1>URL Shortener</h1>
+            <p>For all your URL shortening needs.</p>
+        </div>
+        <div>
+            Made with &#129384; and 🔥 by Emmanuel A.
+            <br><br><br>
+            <a href="https://github.com/29THIR7YS3VEN/url-shortener">
+                Contribute on Github
+            </a>
+        </div>
+    </section>
+    <section class="right">
+        {% if get_flashed_messages() %}
+    <div style="background-color: azure; width: 100%; padding:10px;">
+        {{ get_flashed_messages() | join(" ") }}
+    </div><br>
+    {% endif %}
+        <form action="/" method="POST">
+            <label for="destination">Destination link*</label>
+            <input type="text" required name="destination">
+            <label for="custom">Custom name (optional):</label>
+            <input type="text" required name="custom">
+            <p></p>
+            <br><br>
+            <input type="submit">
+        </form>
+    </section>
+</body>
+</html>

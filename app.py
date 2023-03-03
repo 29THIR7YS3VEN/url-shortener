@@ -26,7 +26,7 @@ def index():
         else:
             check = db.execute(
                 "SELECT * FROM links WHERE _path == :p", p=custom)
-            if check.length != 0:
+            if len(check) != 0:
                 flash(
                     "A link with that name already exists. Please try a different one.")
                 return redirect("/")
@@ -36,3 +36,8 @@ def index():
                 link = db.execute(
                     "SELECT * FROM links WHERE _destination == :destination", destination=destination)
                 return render_template("complete.html", link=link)
+
+@app.route("/<text>")
+def text(text):
+    go = db.execute("SELECT * FROM links WHERE _path = :p", p=text)
+    return redirect(go[0]["_destination"])
